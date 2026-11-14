@@ -1,0 +1,83 @@
+38-      retries: 20
+39-    mem_limit: 64m
+40-    restart: unless-stopped
+41-    logging: *logging
+42-
+43:  api:
+44-    build: ./services/api
+45-    environment:
+46-      DATABASE_URL: postgres://invoicely:invoicely@postgres:5432/invoicely?sslmode=disable
+47-      ASP_URL: http://asp-mock:8090
+48-    ports:
+49-      - "8080:8080"
+50-    depends_on:
+51-      postgres:
+52-        condition: service_healthy
+53-      asp-mock:
+54-        condition: service_healthy
+55-    healthcheck:
+56-      test: ["CMD", "wget", "-qO-", "http://localhost:8080/healthz"]
+57-      interval: 5s
+58-      timeout: 3s
+59-      retries: 20
+60-    mem_limit: 128m
+61-    memswap_limit: 128m
+62-    restart: unless-stopped
+63-    logging: *logging
+64-
+65-  web:
+66-    build: ./web
+67-    environment:
+68:      API_URL: http://api:8080
+69-      GRAFANA_URL: http://localhost:3001
+70-    ports:
+71-      - "3000:3000"
+72-    depends_on:
+73:      api:
+74-        condition: service_started
+75-    healthcheck:
+76-      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/upload"]
+77-      interval: 10s
+78-      timeout: 5s
+79-      retries: 12
+80-    mem_limit: 256m
+81-    restart: unless-stopped
+82-    logging: *logging
+83-
+84-  prometheus:
+85-    image: prom/prometheus:v3.16.0
+86-    command:
+87-      - --config.file=/etc/prometheus/prometheus.yml
+88-      - --storage.tsdb.path=/prometheus
+89-      - --storage.tsdb.retention.time=3d
+90-    volumes:
+91-      - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+92-      - prometheus-data:/prometheus
+93-    ports:
+94-      - "9090:9090"
+95-    mem_limit: 384m
+96-    restart: unless-stopped
+97-    logging: *logging
+98-
+99-  cadvisor:
+100-    image: ghcr.io/google/cadvisor:v0.60.6
+101-    command:
+102-      - --housekeeping_interval=5s
+103-      - --docker_only=true
+104-      - --store_container_labels=false
+105-      - --whitelisted_container_labels=com.docker.compose.service,com.docker.compose.project
+106-      - --disable_metrics=advtcp,cpu_topology,cpuset,hugetlb,memory_numa,percpu,process,referenced_memory,resctrl,sched,tcp,udp,disk,diskIO
+107-    privileged: true
+108-    devices:
+--
+167-  # Command-line tools (sample generator and traffic replay). Used by `make load`, `make replay`, `make samples`.
+168-  tools:
+169-    build: ./tools
+170-    profiles: ["tools"]
+171-    environment:
+172:      API_URL: http://api:8080
+173-
+174-volumes:
+175-  pgdata:
+176-  prometheus-data:
+177-  loki-data:

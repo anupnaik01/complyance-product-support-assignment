@@ -1,0 +1,32 @@
+Incident 04 - Sahara Medical / Bluepeak ERP
+
+File: services/api/internal/submit/submit.go
+
+Lines 114-117:
+Invoice is marked Submitted before the ASP request.
+
+Lines 120-125:
+Network errors are marked Failed.
+
+Lines 133-155:
+HTTP response switch handles:
+200 - accepted
+422 - rejected
+500, 502, 503, 504 - failed
+
+Missing:
+HTTP 429 Too Many Requests is not handled.
+Retry-After is not read.
+No retry or requeue occurs for HTTP 429.
+
+Controlled replay:
+Import ID: 033d0614-0cfa-4e9b-a9c6-9ae4c2f10025
+40 invoices validated.
+8 received HTTP 200 and became Accepted.
+32 received HTTP 429 and remained Submitted.
+ASP mock returned retry_after_s=1.
+
+Conclusion:
+Confirmed lab defect. HTTP 429 responses leave invoices in
+Submitted status without an ASP reference because the response
+status is not handled by the submission switch.

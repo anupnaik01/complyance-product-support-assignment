@@ -1,0 +1,343 @@
+# HELP go_gc_duration_seconds A summary of the wall-time pause (stop-the-world) duration in garbage collection cycles.
+# TYPE go_gc_duration_seconds summary
+go_gc_duration_seconds{quantile="0"} 8.9871e-05
+go_gc_duration_seconds{quantile="0.25"} 0.000190161
+go_gc_duration_seconds{quantile="0.5"} 0.00039801
+go_gc_duration_seconds{quantile="0.75"} 0.001322114
+go_gc_duration_seconds{quantile="1"} 0.047205531
+go_gc_duration_seconds_sum 0.240586501
+go_gc_duration_seconds_count 152
+# HELP go_gc_gogc_percent Heap size target percentage configured by the user, otherwise 100. This value is set by the GOGC environment variable, and the runtime/debug.SetGCPercent function. Sourced from /gc/gogc:percent.
+# TYPE go_gc_gogc_percent gauge
+go_gc_gogc_percent 100
+# HELP go_gc_gomemlimit_bytes Go runtime memory limit configured by the user, otherwise math.MaxInt64. This value is set by the GOMEMLIMIT environment variable, and the runtime/debug.SetMemoryLimit function. Sourced from /gc/gomemlimit:bytes.
+# TYPE go_gc_gomemlimit_bytes gauge
+go_gc_gomemlimit_bytes 9.223372036854776e+18
+# HELP go_goroutines Number of goroutines that currently exist.
+# TYPE go_goroutines gauge
+go_goroutines 16
+# HELP go_info Information about the Go environment.
+# TYPE go_info gauge
+go_info{version="go1.27.4"} 1
+# HELP go_memstats_alloc_bytes Number of bytes allocated in heap and currently in use. Equals to /memory/classes/heap/objects:bytes.
+# TYPE go_memstats_alloc_bytes gauge
+go_memstats_alloc_bytes 3.1773712e+07
+# HELP go_memstats_alloc_bytes_total Total number of bytes allocated in heap until now, even if released already. Equals to /gc/heap/allocs:bytes.
+# TYPE go_memstats_alloc_bytes_total counter
+go_memstats_alloc_bytes_total 1.03089624e+09
+# HELP go_memstats_buck_hash_sys_bytes Number of bytes used by the profiling bucket hash table. Equals to /memory/classes/profiling/buckets:bytes.
+# TYPE go_memstats_buck_hash_sys_bytes gauge
+go_memstats_buck_hash_sys_bytes 1.447713e+06
+# HELP go_memstats_frees_total Total number of heap objects frees. Equals to /gc/heap/frees:objects + /gc/heap/tiny/allocs:objects.
+# TYPE go_memstats_frees_total counter
+go_memstats_frees_total 7.779415e+06
+# HELP go_memstats_gc_sys_bytes Number of bytes used for garbage collection system metadata. Equals to /memory/classes/metadata/other:bytes.
+# TYPE go_memstats_gc_sys_bytes gauge
+go_memstats_gc_sys_bytes 3.911424e+06
+# HELP go_memstats_heap_alloc_bytes Number of heap bytes allocated and currently in use, same as go_memstats_alloc_bytes. Equals to /memory/classes/heap/objects:bytes.
+# TYPE go_memstats_heap_alloc_bytes gauge
+go_memstats_heap_alloc_bytes 3.1773712e+07
+# HELP go_memstats_heap_idle_bytes Number of heap bytes waiting to be used. Equals to /memory/classes/heap/released:bytes + /memory/classes/heap/free:bytes.
+# TYPE go_memstats_heap_idle_bytes gauge
+go_memstats_heap_idle_bytes 1.482752e+07
+# HELP go_memstats_heap_inuse_bytes Number of heap bytes that are in use. Equals to /memory/classes/heap/objects:bytes + /memory/classes/heap/unused:bytes
+# TYPE go_memstats_heap_inuse_bytes gauge
+go_memstats_heap_inuse_bytes 3.8125568e+07
+# HELP go_memstats_heap_objects Number of currently allocated objects. Equals to /gc/heap/objects:objects.
+# TYPE go_memstats_heap_objects gauge
+go_memstats_heap_objects 31690
+# HELP go_memstats_heap_released_bytes Number of heap bytes released to OS. Equals to /memory/classes/heap/released:bytes.
+# TYPE go_memstats_heap_released_bytes gauge
+go_memstats_heap_released_bytes 5.210112e+06
+# HELP go_memstats_heap_sys_bytes Number of heap bytes obtained from system. Equals to /memory/classes/heap/objects:bytes + /memory/classes/heap/unused:bytes + /memory/classes/heap/released:bytes + /memory/classes/heap/free:bytes.
+# TYPE go_memstats_heap_sys_bytes gauge
+go_memstats_heap_sys_bytes 5.2953088e+07
+# HELP go_memstats_last_gc_time_seconds Number of seconds since 1970 of last garbage collection.
+# TYPE go_memstats_last_gc_time_seconds gauge
+go_memstats_last_gc_time_seconds 1.794647464408699e+09
+# HELP go_memstats_mallocs_total Total number of heap objects allocated, both live and gc-ed. Semantically a counter version for go_memstats_heap_objects gauge. Equals to /gc/heap/allocs:objects + /gc/heap/tiny/allocs:objects.
+# TYPE go_memstats_mallocs_total counter
+go_memstats_mallocs_total 7.811105e+06
+# HELP go_memstats_mcache_inuse_bytes Number of bytes in use by mcache structures. Equals to /memory/classes/metadata/mcache/inuse:bytes.
+# TYPE go_memstats_mcache_inuse_bytes gauge
+go_memstats_mcache_inuse_bytes 27552
+# HELP go_memstats_mcache_sys_bytes Number of bytes used for mcache structures obtained from system. Equals to /memory/classes/metadata/mcache/inuse:bytes + /memory/classes/metadata/mcache/free:bytes.
+# TYPE go_memstats_mcache_sys_bytes gauge
+go_memstats_mcache_sys_bytes 32144
+# HELP go_memstats_mspan_inuse_bytes Number of bytes in use by mspan structures. Equals to /memory/classes/metadata/mspan/inuse:bytes.
+# TYPE go_memstats_mspan_inuse_bytes gauge
+go_memstats_mspan_inuse_bytes 293280
+# HELP go_memstats_mspan_sys_bytes Number of bytes used for mspan structures obtained from system. Equals to /memory/classes/metadata/mspan/inuse:bytes + /memory/classes/metadata/mspan/free:bytes.
+# TYPE go_memstats_mspan_sys_bytes gauge
+go_memstats_mspan_sys_bytes 375360
+# HELP go_memstats_next_gc_bytes Number of heap bytes when next garbage collection will take place. Equals to /gc/heap/goal:bytes.
+# TYPE go_memstats_next_gc_bytes gauge
+go_memstats_next_gc_bytes 6.3340882e+07
+# HELP go_memstats_other_sys_bytes Number of bytes used for other system allocations. Equals to /memory/classes/other:bytes.
+# TYPE go_memstats_other_sys_bytes gauge
+go_memstats_other_sys_bytes 2.616103e+06
+# HELP go_memstats_stack_inuse_bytes Number of bytes obtained from system for stack allocator in non-CGO environments. Equals to /memory/classes/heap/stacks:bytes.
+# TYPE go_memstats_stack_inuse_bytes gauge
+go_memstats_stack_inuse_bytes 1.572864e+06
+# HELP go_memstats_stack_sys_bytes Number of bytes obtained from system for stack allocator. Equals to /memory/classes/heap/stacks:bytes + /memory/classes/os-stacks:bytes.
+# TYPE go_memstats_stack_sys_bytes gauge
+go_memstats_stack_sys_bytes 1.572864e+06
+# HELP go_memstats_sys_bytes Number of bytes obtained from system. Equals to /memory/classes/total:byte.
+# TYPE go_memstats_sys_bytes gauge
+go_memstats_sys_bytes 6.2908696e+07
+# HELP go_sched_gomaxprocs_threads The current runtime.GOMAXPROCS setting, or the number of operating system threads that can execute user-level Go code simultaneously. Sourced from /sched/gomaxprocs:threads.
+# TYPE go_sched_gomaxprocs_threads gauge
+go_sched_gomaxprocs_threads 12
+# HELP go_threads Number of OS threads created.
+# TYPE go_threads gauge
+go_threads 17
+# HELP invoicely_asp_responses_total HTTP responses received from the ASP, by status code.
+# TYPE invoicely_asp_responses_total counter
+invoicely_asp_responses_total{code="200"} 125
+# HELP invoicely_http_request_duration_seconds HTTP request latency by route and status code.
+# TYPE invoicely_http_request_duration_seconds histogram
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="0.005"} 1572
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="0.01"} 1584
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="0.025"} 1586
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="0.05"} 1587
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="0.1"} 1587
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="0.25"} 1587
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="0.5"} 1587
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="1"} 1588
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="2.5"} 1588
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="5"} 1588
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="10"} 1588
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="30"} 1588
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="60"} 1588
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="120"} 1588
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="300"} 1588
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/healthz",le="+Inf"} 1588
+invoicely_http_request_duration_seconds_sum{code="200",method="GET",route="/healthz"} 2.0041952410000015
+invoicely_http_request_duration_seconds_count{code="200",method="GET",route="/healthz"} 1588
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="0.005"} 1472
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="0.01"} 1569
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="0.025"} 1596
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="0.05"} 1605
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="0.1"} 1607
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="0.25"} 1610
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="0.5"} 1610
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="1"} 1610
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="2.5"} 1610
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="5"} 1610
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="10"} 1610
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="30"} 1610
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="60"} 1610
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="120"} 1610
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="300"} 1610
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/metrics",le="+Inf"} 1610
+invoicely_http_request_duration_seconds_sum{code="200",method="GET",route="/metrics"} 4.606789067
+invoicely_http_request_duration_seconds_count{code="200",method="GET",route="/metrics"} 1610
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="0.005"} 252
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="0.01"} 256
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="0.025"} 256
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="0.05"} 256
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="0.1"} 257
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="0.25"} 258
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="0.5"} 258
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="1"} 258
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="2.5"} 258
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="5"} 258
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="10"} 258
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="30"} 258
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="60"} 258
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="120"} 258
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="300"} 258
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports",le="+Inf"} 258
+invoicely_http_request_duration_seconds_sum{code="200",method="GET",route="/v1/imports"} 0.5248987079999997
+invoicely_http_request_duration_seconds_count{code="200",method="GET",route="/v1/imports"} 258
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="0.005"} 368
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="0.01"} 391
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="0.025"} 397
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="0.05"} 403
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="0.1"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="0.25"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="0.5"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="1"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="2.5"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="5"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="10"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="30"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="60"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="120"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="300"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}",le="+Inf"} 405
+invoicely_http_request_duration_seconds_sum{code="200",method="GET",route="/v1/imports/{id}"} 1.2245284320000003
+invoicely_http_request_duration_seconds_count{code="200",method="GET",route="/v1/imports/{id}"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="0.005"} 329
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="0.01"} 379
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="0.025"} 397
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="0.05"} 403
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="0.1"} 403
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="0.25"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="0.5"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="1"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="2.5"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="5"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="10"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="30"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="60"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="120"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="300"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/imports/{id}/rows",le="+Inf"} 405
+invoicely_http_request_duration_seconds_sum{code="200",method="GET",route="/v1/imports/{id}/rows"} 1.7911937789999997
+invoicely_http_request_duration_seconds_count{code="200",method="GET",route="/v1/imports/{id}/rows"} 405
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="0.005"} 793
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="0.01"} 800
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="0.025"} 803
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="0.05"} 804
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="0.1"} 805
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="0.25"} 805
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="0.5"} 805
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="1"} 805
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="2.5"} 805
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="5"} 805
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="10"} 805
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="30"} 805
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="60"} 805
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="120"} 805
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="300"} 805
+invoicely_http_request_duration_seconds_bucket{code="200",method="GET",route="/v1/sellers",le="+Inf"} 805
+invoicely_http_request_duration_seconds_sum{code="200",method="GET",route="/v1/sellers"} 0.8159318349999998
+invoicely_http_request_duration_seconds_count{code="200",method="GET",route="/v1/sellers"} 805
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="0.005"} 0
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="0.01"} 0
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="0.025"} 0
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="0.05"} 0
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="0.1"} 0
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="0.25"} 0
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="0.5"} 0
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="1"} 0
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="2.5"} 18
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="5"} 21
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="10"} 21
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="30"} 21
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="60"} 21
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="120"} 21
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="300"} 21
+invoicely_http_request_duration_seconds_bucket{code="201",method="POST",route="/v1/imports",le="+Inf"} 21
+invoicely_http_request_duration_seconds_sum{code="201",method="POST",route="/v1/imports"} 51.807279912999995
+invoicely_http_request_duration_seconds_count{code="201",method="POST",route="/v1/imports"} 21
+# HELP invoicely_import_duration_seconds Time to parse and validate an uploaded file.
+# TYPE invoicely_import_duration_seconds histogram
+invoicely_import_duration_seconds_bucket{le="0.1"} 0
+invoicely_import_duration_seconds_bucket{le="0.25"} 0
+invoicely_import_duration_seconds_bucket{le="0.5"} 0
+invoicely_import_duration_seconds_bucket{le="1"} 0
+invoicely_import_duration_seconds_bucket{le="2.5"} 19
+invoicely_import_duration_seconds_bucket{le="5"} 21
+invoicely_import_duration_seconds_bucket{le="10"} 21
+invoicely_import_duration_seconds_bucket{le="30"} 21
+invoicely_import_duration_seconds_bucket{le="60"} 21
+invoicely_import_duration_seconds_bucket{le="120"} 21
+invoicely_import_duration_seconds_bucket{le="300"} 21
+invoicely_import_duration_seconds_bucket{le="600"} 21
+invoicely_import_duration_seconds_bucket{le="+Inf"} 21
+invoicely_import_duration_seconds_sum 51.67068630000001
+invoicely_import_duration_seconds_count 21
+# HELP invoicely_import_rows_processed_total Spreadsheet rows read from uploaded files.
+# TYPE invoicely_import_rows_processed_total counter
+invoicely_import_rows_processed_total 252
+# HELP invoicely_imports_total Imports finished, by final status.
+# TYPE invoicely_imports_total counter
+invoicely_imports_total{status="completed"} 21
+invoicely_imports_total{status="failed"} 0
+# HELP invoicely_invoices_parsed_total Invoices created from uploaded files.
+# TYPE invoicely_invoices_parsed_total counter
+invoicely_invoices_parsed_total 125
+# HELP invoicely_participant_lookup_duration_seconds Peppol participant lookups made against the ASP directory.
+# TYPE invoicely_participant_lookup_duration_seconds histogram
+invoicely_participant_lookup_duration_seconds_bucket{result="error",le="0.01"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="error",le="0.025"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="error",le="0.05"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="error",le="0.1"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="error",le="0.25"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="error",le="0.5"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="error",le="1"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="error",le="2.5"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="error",le="+Inf"} 0
+invoicely_participant_lookup_duration_seconds_sum{result="error"} 0
+invoicely_participant_lookup_duration_seconds_count{result="error"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="not_registered",le="0.01"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="not_registered",le="0.025"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="not_registered",le="0.05"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="not_registered",le="0.1"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="not_registered",le="0.25"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="not_registered",le="0.5"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="not_registered",le="1"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="not_registered",le="2.5"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="not_registered",le="+Inf"} 0
+invoicely_participant_lookup_duration_seconds_sum{result="not_registered"} 0
+invoicely_participant_lookup_duration_seconds_count{result="not_registered"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="registered",le="0.01"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="registered",le="0.025"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="registered",le="0.05"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="registered",le="0.1"} 0
+invoicely_participant_lookup_duration_seconds_bucket{result="registered",le="0.25"} 252
+invoicely_participant_lookup_duration_seconds_bucket{result="registered",le="0.5"} 252
+invoicely_participant_lookup_duration_seconds_bucket{result="registered",le="1"} 252
+invoicely_participant_lookup_duration_seconds_bucket{result="registered",le="2.5"} 252
+invoicely_participant_lookup_duration_seconds_bucket{result="registered",le="+Inf"} 252
+invoicely_participant_lookup_duration_seconds_sum{result="registered"} 50.74207456600003
+invoicely_participant_lookup_duration_seconds_count{result="registered"} 252
+# HELP invoicely_submission_queue_depth Invoices waiting to be submitted to the ASP.
+# TYPE invoicely_submission_queue_depth gauge
+invoicely_submission_queue_depth 0
+# HELP invoicely_submissions_total Invoice submissions to the ASP, by outcome.
+# TYPE invoicely_submissions_total counter
+invoicely_submissions_total{outcome="accepted"} 125
+invoicely_submissions_total{outcome="failed"} 0
+invoicely_submissions_total{outcome="rejected"} 0
+# HELP invoicely_validation_failures_total Portal validation errors, by rule id.
+# TYPE invoicely_validation_failures_total counter
+invoicely_validation_failures_total{rule="AE-BR-01"} 0
+invoicely_validation_failures_total{rule="AE-BR-02"} 0
+invoicely_validation_failures_total{rule="AE-BR-03"} 0
+invoicely_validation_failures_total{rule="AE-BR-04"} 0
+invoicely_validation_failures_total{rule="AE-BR-05"} 0
+invoicely_validation_failures_total{rule="AE-BR-06"} 0
+invoicely_validation_failures_total{rule="AE-BR-07"} 0
+invoicely_validation_failures_total{rule="AE-BR-08"} 0
+invoicely_validation_failures_total{rule="AE-BR-09"} 0
+invoicely_validation_failures_total{rule="AE-BR-10"} 0
+invoicely_validation_failures_total{rule="AE-BR-11"} 0
+invoicely_validation_failures_total{rule="AE-BR-12"} 0
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 16.84
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP process_network_receive_bytes_total Number of bytes received by the process over the network.
+# TYPE process_network_receive_bytes_total counter
+process_network_receive_bytes_total 6.024285e+06
+# HELP process_network_transmit_bytes_total Number of bytes sent by the process over the network.
+# TYPE process_network_transmit_bytes_total counter
+process_network_transmit_bytes_total 1.2733025e+07
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 14
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 5.5975936e+07
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.79463944549e+09
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.376616448e+09
+# HELP process_virtual_memory_max_bytes Maximum amount of virtual memory available in bytes.
+# TYPE process_virtual_memory_max_bytes gauge
+process_virtual_memory_max_bytes 1.8446744073709552e+19
+# HELP promhttp_metric_handler_requests_in_flight Current number of scrapes being served.
+# TYPE promhttp_metric_handler_requests_in_flight gauge
+promhttp_metric_handler_requests_in_flight 1
+# HELP promhttp_metric_handler_requests_total Total number of scrapes by HTTP status code.
+# TYPE promhttp_metric_handler_requests_total counter
+promhttp_metric_handler_requests_total{code="200"} 1610
+promhttp_metric_handler_requests_total{code="500"} 0
+promhttp_metric_handler_requests_total{code="503"} 0

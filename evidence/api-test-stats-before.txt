@@ -1,0 +1,2 @@
+CONTAINER ID   NAME                   CPU %     MEM USAGE / LIMIT   MEM %     NET I/O           BLOCK I/O     PIDS
+1fda2b117f53   invoicely-lite-api-1   0.03%     32.41MiB / 128MiB   25.32%    3.63MB / 11.3MB   32.7MB / 0B   16

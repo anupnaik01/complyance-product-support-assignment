@@ -1,0 +1,21 @@
+Incident 02 - Controlled Load Test
+
+Test: 20 uploads, 2 concurrent workers.
+Result: 20 successful, 0 failed.
+Completed imports: 20.
+Accepted invoices: 120.
+
+Before test:
+RestartCount=0
+OOMKilled=false
+Memory=33.59 MiB / 128 MiB
+
+After test:
+RestartCount=0
+OOMKilled=false
+Memory=61.95 MiB / 128 MiB
+
+Conclusion:
+The controlled test did not reproduce the reported API restarts.
+Memory usage increased during the test, but no OOM kill or container restart occurred.
+The historical root cause remains unconfirmed.

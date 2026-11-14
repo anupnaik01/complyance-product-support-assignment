@@ -1,0 +1,37 @@
+Incident 05 - Ghaf Tree Cafe
+
+Validation:
+File: services/api/internal/validate/validate.go
+Lines: 113-117
+
+The validator checks both invoice issue date and payment due date.
+If sheet.ParseDate() fails, it raises AE-BR-04.
+
+Date parser:
+File: services/api/internal/sheet/sheet.go
+Lines: 167-185
+
+Accepted formats:
+- ISO date: YYYY-MM-DD
+- Excel date serial numbers
+
+Not accepted:
+- Slash-formatted text such as 13/11/2026.
+
+Controlled replay:
+Import ID: 983c351b-bed8-4c58-85b6-f9a69c2833fa
+HTTP response: 201
+Invoices: 4
+Rejected: 4
+Validation errors: 16
+
+Database evidence:
+GTC-118-HL7G: Rejected, 4 errors
+GTC-119-HL7G: Rejected, 4 errors
+GTC-120-HL7G: Rejected, 6 errors
+GTC-121-HL7G: Rejected, 2 errors
+
+Conclusion:
+The date parser does not support DD/MM/YYYY text.
+Both issue date and due date values in the supplied workbook
+triggered AE-BR-04.

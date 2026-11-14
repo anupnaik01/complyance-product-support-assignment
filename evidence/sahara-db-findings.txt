@@ -1,0 +1,44 @@
+  invoice_number   |  status   | rejected_by | errors |            asp_message_id            
+-------------------+-----------+-------------+--------+--------------------------------------
+ SMS-1116-001-HKXV | Accepted  |             | []     | 4b61c619-8fa9-44a6-a43a-6c7df4bd8c00
+ SMS-1116-002-HKXV | Accepted  |             | []     | 53b5d093-622d-492f-9424-2c796ddec96b
+ SMS-1116-003-HKXV | Accepted  |             | []     | 6788b56f-ab03-4f15-9612-e29abbf28534
+ SMS-1116-004-HKXV | Accepted  |             | []     | 57019dcd-3a0e-489b-a643-f8a96e6cb1d5
+ SMS-1116-005-HKXV | Accepted  |             | []     | 574cca96-e21d-4ae2-b12e-0f9fb59d6048
+ SMS-1116-006-HKXV | Accepted  |             | []     | 905aa82a-c607-4d0e-8b7a-f942a2a0620c
+ SMS-1116-007-HKXV | Accepted  |             | []     | 0ae0b9b6-e1f3-4bc0-abdb-0449bc67adc8
+ SMS-1116-008-HKXV | Accepted  |             | []     | e426d21b-b35f-41e5-b538-fc551978f7f2
+ SMS-1116-009-HKXV | Submitted |             | []     | 
+ SMS-1116-010-HKXV | Submitted |             | []     | 
+ SMS-1116-011-HKXV | Submitted |             | []     | 
+ SMS-1116-012-HKXV | Submitted |             | []     | 
+ SMS-1116-013-HKXV | Submitted |             | []     | 
+ SMS-1116-014-HKXV | Submitted |             | []     | 
+ SMS-1116-015-HKXV | Submitted |             | []     | 
+ SMS-1116-016-HKXV | Submitted |             | []     | 
+ SMS-1116-017-HKXV | Submitted |             | []     | 
+ SMS-1116-018-HKXV | Submitted |             | []     | 
+ SMS-1116-019-HKXV | Submitted |             | []     | 
+ SMS-1116-020-HKXV | Submitted |             | []     | 
+ SMS-1116-021-HKXV | Submitted |             | []     | 
+ SMS-1116-022-HKXV | Submitted |             | []     | 
+ SMS-1116-023-HKXV | Submitted |             | []     | 
+ SMS-1116-024-HKXV | Submitted |             | []     | 
+ SMS-1116-025-HKXV | Submitted |             | []     | 
+ SMS-1116-026-HKXV | Submitted |             | []     | 
+ SMS-1116-027-HKXV | Submitted |             | []     | 
+ SMS-1116-028-HKXV | Submitted |             | []     | 
+ SMS-1116-029-HKXV | Submitted |             | []     | 
+ SMS-1116-030-HKXV | Submitted |             | []     | 
+ SMS-1116-031-HKXV | Submitted |             | []     | 
+ SMS-1116-032-HKXV | Submitted |             | []     | 
+ SMS-1116-033-HKXV | Submitted |             | []     | 
+ SMS-1116-034-HKXV | Submitted |             | []     | 
+ SMS-1116-035-HKXV | Submitted |             | []     | 
+ SMS-1116-036-HKXV | Submitted |             | []     | 
+ SMS-1116-037-HKXV | Submitted |             | []     | 
+ SMS-1116-038-HKXV | Submitted |             | []     | 
+ SMS-1116-039-HKXV | Submitted |             | []     | 
+ SMS-1116-040-HKXV | Submitted |             | []     | 
+(40 rows)
+

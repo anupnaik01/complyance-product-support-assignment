@@ -1,0 +1,74 @@
+docker compose --profile tools run --rm --build --no-deps tools loadgen replay sahara
+ Image invoicely-lite-tools Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 526B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 338B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/golang:1.27.4-alpine3.24
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/library/alpine:3.24.4
+#4 DONE 0.0s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [build 1/6] FROM docker.io/library/golang:1.27.4-alpine3.24@sha256:0a5f7fe796599ff487605987432e7619ae45beeb2fba4c2ce0b907879932aebf
+#7 resolve docker.io/library/golang:1.27.4-alpine3.24@sha256:0a5f7fe796599ff487605987432e7619ae45beeb2fba4c2ce0b907879932aebf 0.0s done
+#7 DONE 0.0s
+
+#8 [stage-1 1/3] FROM docker.io/library/alpine:3.24.4@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
+#8 resolve docker.io/library/alpine:3.24.4@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf 0.0s done
+#8 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 448B done
+#6 DONE 0.0s
+
+#9 [build 5/6] COPY . .
+#9 CACHED
+
+#10 [build 2/6] WORKDIR /src
+#10 CACHED
+
+#11 [build 3/6] COPY go.mod go.sum ./
+#11 CACHED
+
+#12 [build 4/6] RUN go mod download
+#12 CACHED
+
+#13 [stage-1 2/3] RUN apk add --no-cache ca-certificates
+#13 CACHED
+
+#14 [build 6/6] RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/ ./cmd/...
+#14 CACHED
+
+#15 [stage-1 3/3] COPY --from=build /out/ /usr/local/bin/
+#15 CACHED
+
+#16 exporting to image
+#16 exporting layers done
+#16 exporting manifest sha256:bf8e12166f39052cfa3fb5ac9cb678118154525c72e6be5611779a3b42527b32 done
+#16 exporting config sha256:cf19dd47641ad8b82985f48a754da69b6f0156f17aecf40b3d8db07441860865 done
+#16 exporting attestation manifest sha256:205c6858325b3b1f32ae0b330a2b63f7c66f0991bf51ec357d01db677c7be836 0.0s done
+#16 exporting manifest list sha256:24072c2bf88cccdb22ce95d4a9b5e4388c34c6033059f326663e125dba11682d 0.0s done
+#16 naming to docker.io/library/invoicely-lite-tools:latest done
+#16 unpacking to docker.io/library/invoicely-lite-tools:latest done
+#16 DONE 0.1s
+
+#17 resolving provenance for metadata file
+#17 DONE 0.0s
+ Image invoicely-lite-tools Built 
+ Container invoicely-lite-tools-run-36468b049a50 Creating 
+ Container invoicely-lite-tools-run-36468b049a50 Created 
+[09:56:20] sahara       uploading sahara-medical-batch-1116.xlsx (99 KB)
+[09:56:32] sahara       HTTP 201 in 12.4s  import=033d0614-0cfa-4e9b-a9c6-9ae4c2f10025  status=Completed  invoices=40
+[09:56:40] sahara       invoices: Submitted 32, Accepted 8
