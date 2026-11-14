@@ -463,6 +463,42 @@ As investigation progressed, the Sahara issue became a particularly important en
 - Production incident management, monitoring and alert configuration.
 - Financial precision and decimal rounding in invoice processing.
 
+## Portal and Grafana Evidence Review
+
+### Portal – Batch Overview
+
+Reviewed the Invoicely Lite Batches page after running the controlled incident replays.
+
+The portal displayed the following batch-level results:
+
+- Al Noor Fuel: 3 accepted and 3 rejected invoices.
+- Sahara Medical: 8 accepted and 32 submitted invoices.
+- Ghaf Tree Café: 4 rejected invoices.
+- Oasis Builders: Two displayed batches, each showing 8 accepted invoices.
+
+These portal observations are consistent with the controlled replay findings documented in the individual incident investigations. The Oasis batch results do not establish the outcome of the customer's original historical attempts.
+
+**Evidence:** `evidence/portal-batches-overview.png`
+
+### Grafana – Invoicely Lite Overview
+
+Reviewed the Invoicely Lite – Overview dashboard using the Last 30 minutes time range.
+
+At the time of the screenshot, the dashboard showed:
+
+- API up: 1.
+- API process: 1.
+- Request rate: 0.327 requests per second.
+- HTTP 5xx responses: 0.
+- Submission queue: 0.
+- Invoices accepted panel: 0.
+
+The dashboard also displayed request-rate, latency and error-rate graphs.
+
+These are snapshot observations from the displayed dashboard time window. They do not establish the historical production state during the earlier incidents or replace the controlled replay evidence.
+
+**Evidence:** `evidence/grafana-overview-after-investigations.png`
+
 ## 5. Retrospective work log
 
 | Date | From–to | What I worked on |
@@ -490,6 +526,6 @@ All customer acknowledgements and replies in this submission are drafts for the 
 - [x] Review the acknowledgement and escalation drafts.
 - [x] Check that no unverified historical cause is presented as confirmed.
 - [x] Review the README and submission instructions.
-- [ ] Commit and push the completed assignment to my own GitHub repository.
+- [x] Commit and push the completed assignment to my own GitHub repository.
 - [ ] Submit the assignment form using the same email address used for the application.
 
