@@ -50,6 +50,13 @@
 | Not recorded | Queried replay imports. | All 16 replay invoices were Accepted with ASP references. |
 | Not recorded | Inspected duplicate validation code. | Duplicate check compares seller, invoice number and other imports, excluding rejected records. |
 
+### Dead ends and next checks
+
+- The controlled replay completed successfully, so it did not reproduce the original stuck-upload behaviour.
+- The original invoice numbers were not found in the seller records queried. This does not prove that the original uploads were never received.
+- Inspecting duplicate-validation code confirmed that duplicate checks exist, but did not establish what happened during the customer's historical upload attempts.
+- **Next checks:** Obtain the original import IDs and timestamps, inspect the corresponding historical API and import logs, and reconcile each invoice against its ASP message reference before recommending resubmission.
+
 ### Root cause
 
 - **What happened:** Original customer-reported duplicate messages could not be tied conclusively to a historical import. Controlled replay did not reproduce the stuck-upload behaviour.
@@ -92,7 +99,7 @@ Do not upload the entire workbook again. Reconcile each original invoice against
 ### Acknowledgement
 
 - **Proposed time:** 09:50 Dubai time (draft only; not sent).
-- **Sent to:** Priya Nair.
+- **Contact:** Priya Nair.
 
 > Hello Priya,
 >
@@ -129,6 +136,13 @@ Do not upload the entire workbook again. Reconcile each original invoice against
 - **Why:** Historical cause remains unconfirmed. The 128 MiB memory limit is worth monitoring, but the controlled test did not demonstrate an out-of-memory failure.
 - **Evidence:** `evidence/api-compose-config.txt`, `evidence/api-dockerfile.txt`, `evidence/api-inspect-before.txt`, `evidence/api-stats-before.txt`, `evidence/api-controlled-load-test.log`, `evidence/api-test-after.txt`, `evidence/api-test-stats-after.txt`, `evidence/api-metrics-before.txt`, `evidence/api-metrics-after.txt`, `evidence/incident-02-test-findings.txt`, `evidence/grafana-before.png`.
 - **Confidence and open questions:** The controlled test did not reproduce a restart. The historical cause remains unknown. Historical Grafana alert data, container events, host resource metrics and API logs for the reported 15-minute period are still needed.
+
+### Dead ends and next checks
+
+- The local API container showed RestartCount 0 and OOMKilled false. This did not confirm the reported historical restart.
+- The controlled test completed 20 imports successfully, with 120 invoices accepted and no container restart.
+- The 128 MiB memory limit is worth monitoring, but the test did not establish an out-of-memory issue.
+- **Next checks:** Review historical Grafana metrics around the 09:42 alert, Docker container events, host memory and CPU metrics, and API logs for the reported 502 responses. Correlate the findings with invoices that remained in Validated status.
 
 ### Customer resolution reply OR escalation note
 
@@ -206,6 +220,13 @@ P2 because a subset of invoices was rejected by the ASP, while other invoices we
 - **Evidence:** `evidence/al-noor-replay.log`, `evidence/al-noor-db-findings.txt`, `evidence/al-noor-code-findings.txt`.
 - **Confidence:** High. The controlled replay, database results and source code support the same explanation.
 
+### Dead ends and checks performed
+
+- The three accepted invoices were not part of the rejection issue; they had valid ASP references.
+- The investigation did not identify an issue affecting all six invoices or a complete ASP outage.
+- The rejected invoices showed small monetary differences, so the investigation focused on net, VAT and gross calculations rather than assuming incorrect source invoice data.
+- **Further check:** After a rounding correction is implemented, rerun the three rejected invoices and verify that the final gross amount equals the rounded net amount plus rounded VAT before resubmission.
+
 ### Customer resolution reply OR escalation note
 
 - **Which:** Engineering escalation for correction of monetary rounding and regression testing.
@@ -277,6 +298,13 @@ P2 because only part of the batch reached the ASP, leaving 32 invoices without A
 - **Reproduction:** The controlled replay accepted 8 invoices and left 32 Submitted without ASP message IDs after rate-limit responses.
 - **Evidence:** `evidence/sahara-replay.log`, `evidence/sahara-db-findings.txt`, `evidence/sahara-service-logs.txt`, `evidence/sahara-code-findings.txt`.
 - **Confidence:** High. The replay, database states, service logs and source code consistently support this finding.
+
+### Dead ends and checks performed
+
+- The eight invoices with ASP message IDs were already accepted and should not be resubmitted.
+- The remaining 32 invoices had no ASP references, so their final delivery status could not be assumed from the portal status alone.
+- The ASP returned HTTP 429 with a retry delay, but the current submission code did not implement the required retry handling.
+- **Further check:** Reconcile the 32 invoices with ASP records and verify an idempotent retry process that respects `Retry-After` before attempting resubmission.
 
 ### Customer resolution reply OR escalation note
 
@@ -350,6 +378,13 @@ P3 because the issue affects one customer's workbook format and has a practical 
 - **Reproduction:** All four invoices in the controlled replay were rejected. The database recorded 16 date validation errors.
 - **Evidence:** `evidence/ghaf-replay.log`, `evidence/ghaf-code-findings.txt`.
 - **Confidence:** High. The replay results and parser implementation confirm the format limitation.
+
+### Dead ends and checks performed
+
+- All four invoices were rejected with date validation errors; the investigation did not indicate a platform-wide import failure.
+- The date values were valid-looking dates, but the parser did not accept DD/MM/YYYY text format.
+- The issue was traced to date parsing rather than an incorrect invoice amount or VAT calculation.
+- **Further check:** Test a corrected workbook using ISO date text and valid Excel date cells, then verify that the invoices pass date validation.
 
 ### Customer resolution reply OR escalation note
 
@@ -428,9 +463,13 @@ As investigation progressed, the Sahara issue became a particularly important en
 - Production incident management, monitoring and alert configuration.
 - Financial precision and decimal rounding in invoice processing.
 
-## 5. Real-time work log
+## 5. Retrospective work log
 
-A detailed session-by-session time log was not maintained during the exercise. The total working time is estimated at approximately 8 hours. This estimate excludes breaks and non-working time.
+| Date | From–to | What I worked on |
+|---|---|---|
+| 14 November 2026 | Exact start and end times not recorded; approximately 8 hours of work in total. | Set up the lab environment, uploaded and tested the sample workbook, investigated the five incidents using portal data, logs, database queries and source code, collected evidence, prepared customer communication drafts, and documented findings and recommendations. |
+
+**Total working time:** Approximately 8 hours (retrospective estimate; breaks and non-working time excluded).
 
 ## 6. AI usage disclosure
 
@@ -444,13 +483,13 @@ All customer acknowledgements and replies in this submission are drafts for the 
 
 # Final Submission Checklist
 
-- [ ] Confirm all five incident sections are present.
-- [ ] Check that the evidence files referenced above exist in the evidence directory.
-- [ ] Add actual working dates and durations to the real-time work log.
-- [ ] Update total time spent at the top of this document.
-- [ ] Review the acknowledgement and escalation drafts.
-- [ ] Check that no unverified historical cause is presented as confirmed.
-- [ ] Review the README and submission instructions.
+- [x] Confirm all five incident sections are present.
+- [x] Check that the evidence files referenced above exist in the evidence directory.
+- [x] Document the working date and estimated duration in the retrospective work log.
+- [x] Update total time spent at the top of this document.
+- [x] Review the acknowledgement and escalation drafts.
+- [x] Check that no unverified historical cause is presented as confirmed.
+- [x] Review the README and submission instructions.
 - [ ] Commit and push the completed assignment to my own GitHub repository.
 - [ ] Submit the assignment form using the same email address used for the application.
 
